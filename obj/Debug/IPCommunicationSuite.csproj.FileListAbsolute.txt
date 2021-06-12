@@ -1,0 +1,8 @@
+E:\Simpl#andPro\Libraries\Sharp Libraries\Ip Communications\IPCommunicationSuite\IPCommunicationSuite\obj\Debug\ResolveAssemblyReference.cache
+E:\Simpl#andPro\Libraries\Sharp Libraries\Ip Communications\IPCommunicationSuite\IPCommunicationSuite\bin\Debug\IPCommunicationSuite.dll
+E:\Simpl#andPro\Libraries\Sharp Libraries\Ip Communications\IPCommunicationSuite\IPCommunicationSuite\bin\Debug\IPCommunicationSuite.pdb
+E:\Simpl#andPro\Libraries\Sharp Libraries\Ip Communications\IPCommunicationSuite\IPCommunicationSuite\bin\Debug\SimplSharpCustomAttributesInterface.dll
+E:\Simpl#andPro\Libraries\Sharp Libraries\Ip Communications\IPCommunicationSuite\IPCommunicationSuite\bin\Debug\SimplSharpHelperInterface.dll
+E:\Simpl#andPro\Libraries\Sharp Libraries\Ip Communications\IPCommunicationSuite\IPCommunicationSuite\bin\Debug\Newtonsoft.Json.Compact.dll
+E:\Simpl#andPro\Libraries\Sharp Libraries\Ip Communications\IPCommunicationSuite\IPCommunicationSuite\obj\Debug\IPCommunicationSuite.dll
+E:\Simpl#andPro\Libraries\Sharp Libraries\Ip Communications\IPCommunicationSuite\IPCommunicationSuite\obj\Debug\IPCommunicationSuite.pdb
