@@ -1,0 +1,159 @@
+namespace IPCommunicationSuite.UDP;
+{
+     class WakeOnLanSimpl 
+    {
+        // class delegates
+        delegate FUNCTION PacketSendEventhandler ( INTEGER sent );
+
+        // class events
+
+        // class functions
+        FUNCTION Initialize ( STRING mac , STRING ipAddress , INTEGER port , INTEGER ethernetAdapter );
+        FUNCTION SetDebug ( INTEGER state );
+        FUNCTION Wake ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        DelegateProperty PacketSendEventhandler onPacketSent;
+    };
+
+     class UDPCommSimpl 
+    {
+        // class delegates
+        delegate FUNCTION UDPServerEnabledEventHandler ( INTEGER state );
+        delegate FUNCTION UDPServerRXData ( SIMPLSHARPSTRING data );
+
+        // class events
+
+        // class functions
+        FUNCTION Enable ();
+        FUNCTION Disable ();
+        FUNCTION SetDebug ( INTEGER state );
+        FUNCTION SendData ( SIMPLSHARPSTRING data );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        DelegateProperty UDPServerEnabledEventHandler onUdpServer;
+        DelegateProperty UDPServerRXData onUdpRxData;
+    };
+}
+
+namespace IPCommunicationSuite.WebSockets;
+{
+}
+
+namespace IPCommunicationSuite.SSH;
+{
+     class SSHSimpl 
+    {
+        // class delegates
+        delegate FUNCTION IncomingDataEventHandler ( SIMPLSHARPSTRING data );
+        delegate FUNCTION ConnectionStateEventHandler ( INTEGER state );
+
+        // class events
+
+        // class functions
+        FUNCTION Initialize ( STRING ipAddress , STRING userName , STRING Password );
+        FUNCTION SetDebug ( INTEGER debug );
+        FUNCTION Connect ();
+        FUNCTION Disconnect ();
+        FUNCTION SendData ( SIMPLSHARPSTRING data );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        DelegateProperty IncomingDataEventHandler onIncomingData;
+        DelegateProperty ConnectionStateEventHandler onConnectionState;
+    };
+}
+
+namespace IPCommunicationSuite.Telnet;
+{
+     class TelnetClientSimpl 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
+        FUNCTION Initialize ( STRING IpAddress , STRING Password , STRING Username );
+        FUNCTION SetDebug ( INTEGER state );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+}
+
+namespace IPCommunicationSuite.TCP;
+{
+     class TCPClientSIMPL 
+    {
+        // class delegates
+        delegate FUNCTION DataReceivedEventHandler ( SIMPLSHARPSTRING data );
+        delegate FUNCTION ConnectionStatusEventHandler ( INTEGER state , INTEGER errorCode );
+
+        // class events
+
+        // class functions
+        FUNCTION Initialize ( SIMPLSHARPSTRING ipAddress , INTEGER port );
+        FUNCTION Connect ();
+        FUNCTION Disconnect ();
+        FUNCTION SendData ( SIMPLSHARPSTRING data );
+        FUNCTION Debug ( INTEGER value );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        DelegateProperty DataReceivedEventHandler onDataRX;
+        DelegateProperty ConnectionStatusEventHandler onConnection;
+    };
+
+     class TCPServerSIMPL 
+    {
+        // class delegates
+        delegate FUNCTION ConnectionAmountEventhandler ( INTEGER connections );
+        delegate FUNCTION ConnectedEventHandler ( INTEGER state );
+        delegate FUNCTION ServerReceivedStringEventHandler ( SIMPLSHARPSTRING data , INTEGER clientIndex );
+        delegate FUNCTION ServerListeningStatusEventHandler ( INTEGER listening );
+
+        // class events
+
+        // class functions
+        FUNCTION Initialize ( INTEGER port , INTEGER maxConnections );
+        FUNCTION Enable ();
+        FUNCTION Disable ();
+        FUNCTION DisconnectClient ( INTEGER client );
+        FUNCTION SendData ( SIMPLSHARPSTRING data , INTEGER clientIndex );
+        FUNCTION Debug ( INTEGER value );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        DelegateProperty ConnectionAmountEventhandler onConnectionAmount;
+        DelegateProperty ConnectedEventHandler onConnected;
+        DelegateProperty ServerReceivedStringEventHandler onRXData;
+        DelegateProperty ServerListeningStatusEventHandler onServerStateChange;
+    };
+}
+
