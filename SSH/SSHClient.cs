@@ -200,12 +200,12 @@ namespace IPCommunicationSuite.SSH
                     stream.DataReceived += new EventHandler<ShellDataEventArgs>(stream_DataReceived);
                     stream.ErrorOccurred += new EventHandler<ExceptionEventArgs>(stream_ErrorOccurred);
 
-                    if (!keepAlive.Disposed)
+                    if (keepAlive != null)
                     {
                         keepAlive.Stop();
                         keepAlive.Dispose();
                     }
-                    if (!connState.Disposed)
+                    if (connState != null)
                     {
                         connState.Stop();
                         connState.Dispose();
@@ -250,12 +250,12 @@ namespace IPCommunicationSuite.SSH
 
             try
             {
-                if (!keepAlive.Disposed)
+                if (keepAlive != null)
                 {
                     keepAlive.Stop();
                     keepAlive.Dispose();
                 }
-                if (!connState.Disposed)
+                if (connState != null)
                 {
                     connState.Stop();
                     connState.Dispose();

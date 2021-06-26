@@ -73,17 +73,25 @@ namespace IPCommunicationSuite.TCP
                 isConnected = true;
                 client.ReceiveDataAsync(onDataReceivedCallback);
 
-                if (!statusCheck.Disposed)
+                if (statusCheck != null)
                 {
                     statusCheck.Stop();
                     statusCheck.Dispose();
                 }
 
-                statusCheck = new CTimer(StatusCheckMethod, null, 0, 5000);
+                statusCheck = new CTimer(StatusCheckMethod, null, 0, 2000);
             }
             else
             {
                 isConnected = false;
+
+                if (statusCheck != null)
+                {
+                    statusCheck.Stop();
+                    statusCheck.Dispose();
+                }
+
+                statusCheck = new CTimer(StatusCheckMethod, null, 0, 2000);
             }
         }
 
