@@ -73,26 +73,20 @@ namespace IPCommunicationSuite.TCP
                 isConnected = true;
                 client.ReceiveDataAsync(onDataReceivedCallback);
 
-                if (statusCheck != null)
-                {
-                    statusCheck.Stop();
-                    statusCheck.Dispose();
-                }
-
-                statusCheck = new CTimer(StatusCheckMethod, null, 0, 2000);
             }
             else
             {
                 isConnected = false;
 
-                if (statusCheck != null)
-                {
-                    statusCheck.Stop();
-                    statusCheck.Dispose();
-                }
-
-                statusCheck = new CTimer(StatusCheckMethod, null, 0, 2000);
             }
+
+            if (statusCheck != null)
+            {
+                statusCheck.Stop();
+                statusCheck.Dispose();
+            }
+
+            statusCheck = new CTimer(StatusCheckMethod, null, 0, 2000);
         }
 
         void onConnectionCallback(TCPClient tcpClient)
@@ -101,6 +95,16 @@ namespace IPCommunicationSuite.TCP
             SendDebug("The Sockets Connection is: " + client.ClientStatus.ToString());
             if (tcpClient.ClientStatus == SocketStatus.SOCKET_STATUS_CONNECTED)
                 client.ReceiveDataAsync(onDataReceivedCallback);
+            else
+            {
+                if (statusCheck != null)
+                {
+                    statusCheck.Stop();
+                    statusCheck.Dispose();
+                }
+
+                statusCheck = new CTimer(StatusCheckMethod, null, 0, 2000);
+            }
         }
 
         void OnSendDataCallback(TCPClient tcpClient, int bytes)
@@ -128,7 +132,12 @@ namespace IPCommunicationSuite.TCP
         private void StatusCheckMethod(object obj)
         {
             if (client.ClientStatus != SocketStatus.SOCKET_STATUS_CONNECTED)
+            {
+                client = new TCPClient(IpAddress, port, bufferSize);
+                client.SocketStatusChange += new TCPClientSocketStatusChangeEventHandler(client_SocketStatusChange);
                 Connect();
+            }
+
         }
 
         private void SendDebug(string data)
@@ -140,7 +149,6 @@ namespace IPCommunicationSuite.TCP
             }
 
         }
-
 
         #endregion
 
@@ -157,7 +165,6 @@ namespace IPCommunicationSuite.TCP
             {
                 client.ConnectToServerAsync(onConnectionCallback);
             }
-            
         }
 
         public void Disconnect()
